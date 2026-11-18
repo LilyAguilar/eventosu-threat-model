@@ -1,0 +1,1639 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "EventosU - Modelo de Amenazas",
+    "owner": "Lilian Aguilar",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Lilian Aguilar"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Nivel 0 - Diagrama de Contexto (EventosU)",
+        "diagramType": "STRIDE",
+        "placeholder": "Diagrama de contexto de EventosU",
+        "thumbnail": "",
+        "version": "2.2.0",
+        "cells": [
+          {
+            "position": {
+              "x": 460,
+              "y": 280
+            },
+            "size": {
+              "width": 360,
+              "height": 220
+            },
+            "attrs": {
+              "text": {
+                "text": "Límite Perimetral EventosU (Cloud)"
+              },
+              "body": {
+                "strokeDasharray": "10,5",
+                "stroke": "#d32f2f",
+                "strokeWidth": 2,
+                "fill": "transparent"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "id": "d0-tb-1",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Límite Perimetral EventosU (Cloud)",
+              "description": "Frontera de confianza entre los actores/proveedores externos y la plataforma EventosU",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 330
+            },
+            "size": {
+              "width": 160,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "P0: Sistema EventosU\n(Web, API, BD, Bucket)"
+              },
+              "body": {
+                "stroke": "#1976d2",
+                "strokeWidth": 2,
+                "fill": "#e3f2fd"
+              }
+            },
+            "shape": "process",
+            "id": "d0-proc-eventosu",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Process",
+              "name": "Sistema EventosU",
+              "description": "Plataforma integral para publicación de eventos, inscripción, cobro y validación de acceso por QR",
+              "outOfScope": false,
+              "privilegeLevel": "Alto",
+              "hasOpenThreats": true,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 60
+            },
+            "size": {
+              "width": 150,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Visitante"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-visitante",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Visitante",
+              "description": "Usuario anónimo que consulta el catálogo público de eventos",
+              "outOfScope": false,
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 190
+            },
+            "size": {
+              "width": 150,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Estudiante / Público"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-estudiante",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Estudiante o Público",
+              "description": "Se registra, inicia sesión, se inscribe, paga y descarga su entrada QR",
+              "outOfScope": false,
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 330
+            },
+            "size": {
+              "width": 150,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Organizador"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-organizador",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Organizador",
+              "description": "Crea eventos, sube el afiche, consulta inscritos y exporta CSV",
+              "outOfScope": false,
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 470
+            },
+            "size": {
+              "width": 150,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Personal de Puerta"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-puerta",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Personal de Puerta",
+              "description": "Escanea el QR con la app móvil para validar la entrada al evento",
+              "outOfScope": false,
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 60,
+              "y": 600
+            },
+            "size": {
+              "width": 150,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Administrador"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-admin",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Administrador",
+              "description": "Gestiona usuarios y roles, y revisa reportes desde /admin",
+              "outOfScope": false,
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1020,
+              "y": 140
+            },
+            "size": {
+              "width": 170,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Microsoft Entra ID\n(Proveedor OAuth 2.0)"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-entraid",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Microsoft Entra ID",
+              "description": "Proveedor de identidad institucional mediante OAuth 2.0 / OIDC",
+              "outOfScope": true,
+              "reasonOutOfScope": "Infraestructura administrada por Microsoft / TI de la Universidad",
+              "providesAuthentication": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1020,
+              "y": 350
+            },
+            "size": {
+              "width": 170,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Pasarela de Pagos\n(Proveedor Externo)"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-pasarela",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Pasarela de Pagos",
+              "description": "Procesa el pago con tarjeta y devuelve confirmación por webhook a la API",
+              "outOfScope": true,
+              "reasonOutOfScope": "Servicio externo PCI-DSS de tercero",
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1020,
+              "y": 550
+            },
+            "size": {
+              "width": 170,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Servicio de Correo\n(Proveedor Externo)"
+              }
+            },
+            "shape": "actor",
+            "id": "d0-act-correo",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Servicio Externo de Correo",
+              "description": "Envía las entradas QR y los enlaces de restablecimiento de contraseña",
+              "outOfScope": true,
+              "reasonOutOfScope": "Proveedor SaaS externo de mensajería",
+              "providesAuthentication": false,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-1",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-visitante"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Consulta catálogo de eventos (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Consulta catálogo de eventos (HTTPS, JSON)",
+              "description": "Petición GET de eventos públicos y afiches",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-2",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-estudiante"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Registro, login, inscripción y descarga QR (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Registro, login, inscripción y descarga QR (HTTPS, JSON)",
+              "description": "Flujo de usuario autenticado con JWT",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-3",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-organizador"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Creación evento, subida afiche y exportación CSV (HTTPS, Multipart/CSV)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Creación evento, subida afiche y exportación CSV (HTTPS, Multipart/CSV)",
+              "description": "Operaciones de gestión de eventos y descarga de PII en CSV",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-4",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-puerta"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Escaneo y validación de QR (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Escaneo y validación de QR (HTTPS, JSON)",
+              "description": "Envío de token QR y respuesta 'válido' o 'ya usado'",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-5",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-admin"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Gestión de usuarios/roles y reportes en /admin (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Gestión de usuarios/roles y reportes en /admin (HTTPS, JSON)",
+              "description": "Administración del sistema usando el mismo login",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-6",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-proc-eventosu"
+            },
+            "target": {
+              "cell": "d0-act-entraid"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Autenticación institucional OAuth 2.0 (HTTPS, OIDC/JWT)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Autenticación institucional OAuth 2.0 (HTTPS, OIDC/JWT)",
+              "description": "Intercambio de código de autorización y token OAuth 2.0",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-7",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-act-pasarela"
+            },
+            "target": {
+              "cell": "d0-proc-eventosu"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Webhook de confirmación de pago (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Webhook de confirmación de pago (HTTPS, JSON)",
+              "description": "Notificación asíncrona de pago completado",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d0-flow-8",
+            "zIndex": 15,
+            "source": {
+              "cell": "d0-proc-eventosu"
+            },
+            "target": {
+              "cell": "d0-act-correo"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Envío de QR y restablecimiento contraseña (HTTPS, JSON/SMTP)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Envío de QR y restablecimiento contraseña (HTTPS, JSON/SMTP)",
+              "description": "Solicitud de despacho de correos transaccionales",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false
+            }
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "title": "Nivel 1 - Diagrama de Componentes (EventosU)",
+        "diagramType": "STRIDE",
+        "placeholder": "Diagrama detallado Nivel 1 con componentes, 4 límites de confianza y 18 amenazas",
+        "thumbnail": "",
+        "version": "2.2.0",
+        "cells": [
+          {
+            "position": {
+              "x": 300,
+              "y": 40
+            },
+            "size": {
+              "width": 270,
+              "height": 540
+            },
+            "attrs": {
+              "text": {
+                "text": "Límite 1: Clientes y CDN Público (Navegador / App Móvil)"
+              },
+              "body": {
+                "strokeDasharray": "10,5",
+                "stroke": "#fb8c00",
+                "strokeWidth": 2,
+                "fill": "transparent"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "id": "d1-tb-1",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Límite 1: Clientes y CDN Público",
+              "description": "Entorno de ejecución en el cliente (React desde CDN y App Móvil de Puerta), fuera del control directo del servidor",
+              "isTrustBoundary": true
+            }
+          },
+          {
+            "position": {
+              "x": 630,
+              "y": 140
+            },
+            "size": {
+              "width": 250,
+              "height": 340
+            },
+            "attrs": {
+              "text": {
+                "text": "Límite 2: Contenedor de Aplicación Cloud (API Node.js)"
+              },
+              "body": {
+                "strokeDasharray": "10,5",
+                "stroke": "#d32f2f",
+                "strokeWidth": 2,
+                "fill": "transparent"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "id": "d1-tb-2",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Límite 2: Contenedor de Aplicación Cloud",
+              "description": "Perímetro de ejecución de la API Backend en Node.js que recibe tráfico de Internet y de proveedores externos",
+              "isTrustBoundary": true
+            }
+          },
+          {
+            "position": {
+              "x": 940,
+              "y": 40
+            },
+            "size": {
+              "width": 280,
+              "height": 310
+            },
+            "attrs": {
+              "text": {
+                "text": "Límite 3: Red de Datos y Almacenamiento Cloud"
+              },
+              "body": {
+                "strokeDasharray": "10,5",
+                "stroke": "#388e3c",
+                "strokeWidth": 2,
+                "fill": "transparent"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "id": "d1-tb-3",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Límite 3: Red de Datos y Almacenamiento Cloud",
+              "description": "Servicios administrados de persistencia (PostgreSQL y Bucket de Objetos)",
+              "isTrustBoundary": true
+            }
+          },
+          {
+            "position": {
+              "x": 940,
+              "y": 380
+            },
+            "size": {
+              "width": 280,
+              "height": 360
+            },
+            "attrs": {
+              "text": {
+                "text": "Límite 4: Proveedores Externos (Terceros)"
+              },
+              "body": {
+                "strokeDasharray": "10,5",
+                "stroke": "#7b1fa2",
+                "strokeWidth": 2,
+                "fill": "transparent"
+              }
+            },
+            "shape": "trust-boundary-box",
+            "id": "d1-tb-4",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Límite 4: Proveedores Externos (Terceros)",
+              "description": "Redes externas de Microsoft Entra ID, Pasarela de Pagos y Servicio de Correo",
+              "isTrustBoundary": true
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 50
+            },
+            "size": {
+              "width": 160,
+              "height": 65
+            },
+            "attrs": {
+              "text": {
+                "text": "Visitante"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-visitante",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Visitante",
+              "description": "Consulta el catálogo público de eventos",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 150
+            },
+            "size": {
+              "width": 160,
+              "height": 65
+            },
+            "attrs": {
+              "text": {
+                "text": "Estudiante o Público"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-estudiante",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Estudiante o Público",
+              "description": "Se registra, inicia sesión, se inscribe, paga y descarga su entrada QR",
+              "outOfScope": false,
+              "hasOpenThreats": false,
+              "threats": [
+                {
+                  "id": "T-18",
+                  "title": "T-18: Uso compartido voluntario del código QR antes del evento",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Elevation of privilege",
+                  "description": "Un estudiante que compró legítimamente una entrada envía una captura de pantalla de su código QR a un tercero; el tercero llega primero a la puerta del evento y logra ingresar, dejando al comprador original con estado 'ya usado'.",
+                  "mitigation": "Riesgo ACEPTADO (Responsable: Product Owner de EventosU / Dirección de TI). Se incluye advertencia explícita en el correo y boleto indicando que el QR es personal, intransferible y válido solo para el primer escaneo.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 250
+            },
+            "size": {
+              "width": 160,
+              "height": 65
+            },
+            "attrs": {
+              "text": {
+                "text": "Organizador"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-organizador",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Organizador",
+              "description": "Crea eventos, sube el afiche, ve inscritos y exporta CSV",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 360
+            },
+            "size": {
+              "width": 160,
+              "height": 65
+            },
+            "attrs": {
+              "text": {
+                "text": "Administrador"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-admin",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Administrador",
+              "description": "Gestiona usuarios y roles, revisa reportes",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 480
+            },
+            "size": {
+              "width": 160,
+              "height": 65
+            },
+            "attrs": {
+              "text": {
+                "text": "Personal de Puerta"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-puerta",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Personal de Puerta",
+              "description": "Opera la aplicación móvil para escanear códigos QR",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 355,
+              "y": 80
+            },
+            "size": {
+              "width": 160,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Sitio Web\n(React desde CDN)"
+              }
+            },
+            "shape": "process",
+            "id": "d1-proc-web",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Process",
+              "name": "Sitio Web (React en CDN)",
+              "description": "SPA en React servida desde un CDN para visitantes, estudiantes y organizadores",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 355,
+              "y": 210
+            },
+            "size": {
+              "width": 160,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Token de Sesión\n(Navegador)"
+              }
+            },
+            "shape": "store",
+            "id": "d1-store-token",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Store",
+              "name": "Almacenamiento de Token en Navegador",
+              "description": "Guarda el JWT de sesión en el navegador del cliente (localStorage)",
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-02",
+                  "title": "T-02: Robo del token JWT en navegador mediante XSS",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Un atacante inyecta código JavaScript malicioso (XSS) en la descripción de un evento que lee el token JWT almacenado en el localStorage del navegador de un usuario o administrador, exfiltrándolo para suplantar su sesión ante la API.",
+                  "mitigation": "Eliminar el almacenamiento del JWT en localStorage; emitir el token de sesión en una cookie HttpOnly, Secure y SameSite=Strict, y configurar Content-Security-Policy (CSP).",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 355,
+              "y": 320
+            },
+            "size": {
+              "width": 160,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Panel Administración\n(Ruta /admin)"
+              }
+            },
+            "shape": "process",
+            "id": "d1-proc-admin",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Process",
+              "name": "Panel de Administración (/admin)",
+              "description": "Ruta /admin del mismo sitio React que utiliza el mismo login que los usuarios",
+              "outOfScope": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-08",
+                  "title": "T-08: Repudio en cambios de roles y gestión de usuarios en /admin",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Un usuario con privilegios de administrador modifica el rol de una cuenta o altera registros manualmente y luego niega la acción porque no existe una bitácora de auditoría administrativa inmutable.",
+                  "mitigation": "Implementar un middleware de auditoría obligatoria en todas las rutas '/api/admin/*' que registre en logs append-only quién ejecutó el cambio, el valor anterior, el valor nuevo y el timestamp.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-16",
+                  "title": "T-16: Escalación de privilegios hacia /admin y endpoints administrativos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Un estudiante autenticado descubre la ruta '/admin' y sus endpoints en el bundle de React e invoca 'PUT /api/admin/usuarios/:id/rol' con su JWT de estudiante; como usan el mismo login y la API no valida el rol específico, se autoasigna el rol de Administrador.",
+                  "mitigation": "Implementar un middleware RBAC en la API Node.js que verifique explícitamente que el rol del usuario sea 'Administrador' antes de ejecutar cualquier controlador bajo '/api/admin/*'.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 355,
+              "y": 450
+            },
+            "size": {
+              "width": 160,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "App de Puerta\n(Aplicación Móvil)"
+              }
+            },
+            "shape": "process",
+            "id": "d1-proc-app",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Process",
+              "name": "App de Puerta (Móvil)",
+              "description": "Aplicación móvil que escanea el QR y consulta a la API para validarlo",
+              "outOfScope": false
+            }
+          },
+          {
+            "position": {
+              "x": 680,
+              "y": 240
+            },
+            "size": {
+              "width": 150,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "API Backend\n(Node.js en Contenedor)"
+              }
+            },
+            "shape": "process",
+            "id": "d1-proc-api",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Process",
+              "name": "API Backend (Node.js)",
+              "description": "Contenedor en la nube con autenticación JWT, integración OAuth 2.0, webhook de pagos y validación de QR",
+              "outOfScope": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-12",
+                  "title": "T-12: Divulgación de datos o stack traces por inyección SQL / errores no controlados",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Un atacante envía parámetros malformados o payloads de inyección SQL en el catálogo público de eventos, provocando que la API devuelva stack traces detallados o extraiga registros de PostgreSQL.",
+                  "mitigation": "Usar exclusivamente consultas parametrizadas (prepared statements), validar entradas con Zod/Joi y configurar un manejador de errores que oculte detalles internos en producción.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 80
+            },
+            "size": {
+              "width": 180,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Base de Datos\n(PostgreSQL Administrado)"
+              }
+            },
+            "shape": "store",
+            "id": "d1-store-db",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Store",
+              "name": "Base de Datos (PostgreSQL)",
+              "description": "Almacena usuarios, eventos, inscripciones y pagos (sin datos de tarjeta)",
+              "isALog": false,
+              "isEncrypted": true
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 220
+            },
+            "size": {
+              "width": 180,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Almacenamiento Archivos\n(Bucket: Afiches y CSV)"
+              }
+            },
+            "shape": "store",
+            "id": "d1-store-bucket",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Store",
+              "name": "Bucket de Objetos (Afiches y CSV)",
+              "description": "Almacena tanto los afiches públicos de los eventos como los archivos CSV exportados con PII",
+              "isALog": false,
+              "isEncrypted": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-10",
+                  "title": "T-10: Exposición pública de archivos CSV con PII en el Bucket de objetos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Un atacante enumera o accede directamente a las URLs de los archivos CSV exportados en el Bucket, aprovechando que el bucket tiene permisos públicos para servir los afiches, descargando nombre, correo, carné y teléfono de los inscritos.",
+                  "mitigation": "Separar en dos buckets ('eventosu-afiches-public' y 'eventosu-exports-private' con BlockPublicAccess total) o transmitir el CSV directamente desde la API en memoria sin guardarlo en el bucket.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 410
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Microsoft Entra ID\n(OAuth 2.0 Institucional)"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-entraid",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Microsoft Entra ID",
+              "description": "Servicio de login con correo institucional mediante OAuth 2.0",
+              "outOfScope": true,
+              "providesAuthentication": true
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 530
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Pasarela de Pagos\n(Proveedor Externo)"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-pasarela",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Pasarela de Pagos",
+              "description": "Proveedor externo de cobro que notifica confirmaciones por webhook",
+              "outOfScope": true
+            }
+          },
+          {
+            "position": {
+              "x": 990,
+              "y": 640
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Servicio de Correo\n(Proveedor Externo)"
+              }
+            },
+            "shape": "actor",
+            "id": "d1-act-correo",
+            "zIndex": 10,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Servicio de Correo",
+              "description": "Servicio externo que envía la entrada QR y el restablecimiento de contraseña",
+              "outOfScope": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-vis-web",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-visitante"
+            },
+            "target": {
+              "cell": "d1-proc-web"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Navegación catálogo (HTTPS, HTML/JS)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Navegación catálogo (HTTPS, HTML/JS)",
+              "protocol": "HTTPS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-est-web",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-estudiante"
+            },
+            "target": {
+              "cell": "d1-proc-web"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Credenciales, inscripción y descarga QR (HTTPS)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Credenciales, inscripción y descarga QR (HTTPS)",
+              "protocol": "HTTPS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-org-web",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-organizador"
+            },
+            "target": {
+              "cell": "d1-proc-web"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Datos evento, afiche y descarga CSV (HTTPS)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Datos evento, afiche y descarga CSV (HTTPS)",
+              "protocol": "HTTPS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-adm-panel",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-admin"
+            },
+            "target": {
+              "cell": "d1-proc-admin"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Gestión usuarios/roles en /admin (HTTPS)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Gestión usuarios/roles en /admin (HTTPS)",
+              "protocol": "HTTPS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-pue-app",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-puerta"
+            },
+            "target": {
+              "cell": "d1-proc-app"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Lectura cámara QR (Local)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Lectura cámara QR (Local)",
+              "protocol": "Local",
+              "isEncrypted": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-web-token",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-web"
+            },
+            "target": {
+              "cell": "d1-store-token"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Lectura/Escritura JWT (JS DOM API)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Lectura/Escritura JWT (JS DOM API)",
+              "protocol": "JS DOM API",
+              "isEncrypted": false
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-web-api",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-web"
+            },
+            "target": {
+              "cell": "d1-proc-api"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Peticiones usuario/organizador + JWT (HTTPS, JSON/CSV)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Peticiones usuario/organizador + JWT (HTTPS, JSON/CSV)",
+              "description": "Cruza Límite 1 -> Límite 2: Inscripción, subida de afiche y exportación de lista de inscritos en CSV",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-05",
+                  "title": "T-05: Inyección de fórmulas (CSV Injection) en la exportación de inscritos",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Un atacante se registra en un evento ingresando en su nombre o teléfono una fórmula ejecutable (ej. =CMD|'/c calc'!A0 o =HYPERLINK(...)); cuando el organizador exporta el CSV y lo abre en Excel, la fórmula se ejecuta y exfiltra los datos de inscritos.",
+                  "mitigation": "Sanitizar todos los campos al exportar el CSV anteponiendo una comilla simple (') a cualquier celda que inicie con '=', '+', '-', '@' o '|', y validar el formato de entrada al registrarse.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-06",
+                  "title": "T-06: Subida de archivo malicioso o sobrescritura de afiche",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Un atacante con cuenta de organizador sube un archivo SVG/HTML con script incrustado en lugar de un afiche o sobrescribe el afiche de otro evento en el Bucket mediante nombres predecibles.",
+                  "mitigation": "Validar magic bytes permitiendo solo PNG/JPEG/WebP, recodificar la imagen, asignar un UUIDv4 aleatorio como nombre y servir con X-Content-Type-Options: nosniff.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-11",
+                  "title": "T-11: Descarga no autorizada de CSV de otros eventos (IDOR / BOLA)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Un organizador del Evento A modifica el ID del evento en 'GET /api/eventos/104/export-csv' y, por falta de validación de propiedad del objeto (BOLA), descarga el CSV con datos personales de los inscritos del Evento B.",
+                  "mitigation": "Validar en la consulta de la API que 'evento.organizador_id === req.user.id' (o rol 'admin') antes de generar o entregar el listado de inscritos.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-14",
+                  "title": "T-14: Agotamiento de memoria por subida de afiches gigantes o exportación masiva de CSV",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Un organizador sube un afiche de cientos de megabytes o dispara exportaciones masivas de CSV en bucle, saturando la memoria RAM del contenedor Node.js hasta causar un reinicio por OOM.",
+                  "mitigation": "Limitar el tamaño máximo de subida a 5 MB en el proxy/API e implementar la exportación de CSV mediante streams paginados con límite de 5 exportaciones por minuto.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-admin-api",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-admin"
+            },
+            "target": {
+              "cell": "d1-proc-api"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Operaciones administrativas + JWT (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Operaciones administrativas + JWT (HTTPS, JSON)",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-app-api",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-app"
+            },
+            "target": {
+              "cell": "d1-proc-api"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Validación de QR: 'válido' / 'ya usado' (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Validación de QR: 'válido' / 'ya usado' (HTTPS, JSON)",
+              "description": "Cruza Límite 1 -> Límite 2: Flujo obligatorio de validación de código QR desde la App de Puerta hacia la API",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-07",
+                  "title": "T-07: Repudio en el escaneo y validación de códigos QR en puerta",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Un integrante del personal de puerta valida códigos QR de cómplices o marca entradas como usadas irregularmente y luego lo niega, ya que la API solo cambia el estado a 'ya usado' sin guardar bitácora del operador, hora e IP.",
+                  "mitigation": "Registrar cada intento de validación en una tabla inmutable 'auditoria_accesos' incluyendo id_inscripcion, id_operador_puerta, resultado, timestamp UTC e IP.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-13",
+                  "title": "T-13: Denegación de servicio (DoS) al endpoint de validación de QR en hora de ingreso",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Un atacante inunda con miles de peticiones por segundo el endpoint de validación de QR o el catálogo durante la apertura de puertas; al no existir Rate Limiting, se agota el pool de conexiones a PostgreSQL e impide validar entradas.",
+                  "mitigation": "Implementar Rate Limiting por IP y por token en el CDN/WAF y en la API Node.js, cachear el catálogo público en el CDN y configurar timeouts y límites de pool en PostgreSQL.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-17",
+                  "title": "T-17: Condición de carrera (TOCTOU) en validación simultánea de un mismo QR",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Dos personas presentan copias del mismo QR válido exactamente al mismo tiempo en dos puertas distintas; por falta de atomicidad entre el SELECT y el UPDATE en la API, ambas peticiones leen el estado como disponible y la API responde 'válido' a los dos.",
+                  "mitigation": "Ejecutar la validación mediante una única sentencia SQL atómica: 'UPDATE inscripciones SET estado = ''usado'', fecha_ingreso = NOW() WHERE qr_token = $1 AND estado = ''valido'' RETURNING id;' y verificar que actualice exactamente 1 fila.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-api-db",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-api"
+            },
+            "target": {
+              "cell": "d1-store-db"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Consultas y transacciones SQL (TCP/TLS, PostgreSQL)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Consultas y transacciones SQL (TCP/TLS, PostgreSQL)",
+              "protocol": "PostgreSQL / TLS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-api-bucket",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-api"
+            },
+            "target": {
+              "cell": "d1-store-bucket"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Subida afiches y escritura/lectura CSV (HTTPS, S3 API)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Subida afiches y escritura/lectura CSV (HTTPS, S3 API)",
+              "protocol": "HTTPS",
+              "isEncrypted": true
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-api-entraid",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-api"
+            },
+            "target": {
+              "cell": "d1-act-entraid"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Login institucional OAuth 2.0 (HTTPS, OIDC/JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Login institucional OAuth 2.0 (HTTPS, OIDC/JSON)",
+              "description": "Cruza Límite 2 <-> Límite 4: Flujo de autenticación institucional con Microsoft Entra ID",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-03",
+                  "title": "T-03: Suplantación de identidad en callback OAuth 2.0 (Login CSRF / Token de otro tenant)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Un atacante manipula el callback OAuth 2.0 explotando la falta de validación del parámetro 'state' o de los claims 'iss' y 'aud' del token de Microsoft Entra ID, logrando autenticar o vincular cuentas institucionales ajenas.",
+                  "mitigation": "Usar OAuth 2.0 con PKCE y parámetro 'state' aleatorio ligado a la sesión, y validar criptográficamente la firma JWKS, el 'issuer' (tenant ID universitario) y el 'audience' en la API.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-pasarela-api",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-act-pasarela"
+            },
+            "target": {
+              "cell": "d1-proc-api"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Webhook de pago (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Webhook de pago (HTTPS, JSON)",
+              "description": "Cruza Límite 4 -> Límite 2: Flujo obligatorio donde la pasarela notifica a la API que el pago fue realizado",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-01",
+                  "title": "T-01: Falsificación de Webhook de confirmación de pago (Spoofing de Pasarela)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Un atacante externo envía una petición HTTP POST directa al endpoint del webhook de la API simulando ser la pasarela de pagos (sin firma HMAC), logrando que la API marque su inscripción como pagada y le envíe el código QR gratis.",
+                  "mitigation": "Verificar obligatoriamente la firma criptográfica HMAC-SHA256 en la cabecera del webhook usando crypto.timingSafeEqual y un secreto compartido antes de procesar cualquier pago.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-04",
+                  "title": "T-04: Manipulación de monto o referencia de evento entre inscripción y webhook",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Un atacante altera los parámetros de la inscripción o del pago para pagar el monto de un taller económico pero asociar la confirmación del webhook a un concierto costoso, obteniendo la entrada cara por falta de validación cruzada de montos.",
+                  "mitigation": "Contrastar en la API que el monto pagado y moneda reportados en el webhook coincidan exactamente con el precio oficial del evento en PostgreSQL para esa inscripción.",
+                  "modelType": "STRIDE"
+                },
+                {
+                  "id": "T-09",
+                  "title": "T-09: Repudio en notificaciones y conciliación de pagos por Webhook",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Ante un reclamo o contracargo de un usuario, la universidad no puede demostrar ni conciliar qué notificó la pasarela porque la API solo cambia el estado de la inscripción sin guardar el payload original firmado ni el ID de transacción.",
+                  "mitigation": "Almacenar en una tabla 'transacciones_webhook' el ID único de transacción de la pasarela, el payload JSON íntegro, la firma recibida y el timestamp antes de emitir el QR.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "id": "d1-flow-api-correo",
+            "zIndex": 15,
+            "source": {
+              "cell": "d1-proc-api"
+            },
+            "target": {
+              "cell": "d1-act-correo"
+            },
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "text": {
+                    "text": "Envío de QR y reset de contraseña (HTTPS, JSON)"
+                  }
+                }
+              }
+            ],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Envío de QR y reset de contraseña (HTTPS, JSON)",
+              "description": "Cruza Límite 2 -> Límite 4: Solicitud de envío de correos transaccionales al proveedor externo",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "T-15",
+                  "title": "T-15: Agotamiento de cuota del servicio de correo por abuso de reset de contraseña",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Un atacante automatiza miles de solicitudes de restablecimiento de contraseña, agotando la cuota diaria del proveedor externo de correo e impidiendo que los compradores reales reciban sus entradas QR por email.",
+                  "mitigation": "Aplicar Rate Limiting estricto por IP y cuenta en el endpoint de recuperación (máx. 3 cada 15 min) y separar las colas/credenciales de envío entre correos de cuenta y entrega de entradas QR.",
+                  "modelType": "STRIDE"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "Catedrático del Curso",
+    "threatTop": 18
+  }
+}
