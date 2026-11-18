@@ -6,7 +6,7 @@ Repositorio del modelado de amenazas en fase de diseño para la plataforma unive
 
 ## Integrantes
 
-Lilian Aguilar - 16005910
+Lilian Aguilar - 16005941
 
 ---
 
